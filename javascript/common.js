@@ -1,10 +1,7 @@
 window.ATLib = window.ATLib || {};
 
 Object.assign(window.ATLib, {
-    config: {
-        awsEmailUrl: null,
-        awsEmailApi: null
-    },
+
     sleep: async (seconds) => {
         return new Promise((resolve) => {
             let remaining = seconds;
