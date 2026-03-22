@@ -104,7 +104,7 @@ Object.assign(window.ATLib, {
                 // It hasn't been N minutes yet!
                 const remaining = Math.round((timePassed) / 1000 / 60);
                 console.log(`Refreshing. ${remaining} minutes passed`);
-                await this.sleep(5)
+                await window.ATLib.sleep(5)
                 //window.location.href = redirectUrl;
                 window.location.reload()
                 return null; // Stop execution
@@ -114,9 +114,9 @@ Object.assign(window.ATLib, {
     },
     testVariable: 123,
     testFunctionAt: ()=>{
-        console.log(this.testVariable);
-        this.testVariable = this.testVariable + 1
-        console.log(this.testVariable)
+        console.log(window.ATLib.testVariable);
+        window.ATLib.testVariable = window.ATLib.testVariable + 1
+        console.log(window.ATLib.testVariable)
     }
 });
 
