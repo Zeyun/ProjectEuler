@@ -1,0 +1,1 @@
+git commit -a -m "auto" --allow-empty && git push
