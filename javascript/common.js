@@ -68,11 +68,14 @@ Object.assign(window.ATLib, {
             });
         },
 
-    getBusinessDate: (daysFromNow, dateFormat={
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit'
-    }) => {
+    getBusinessDate: (
+        daysFromNow,
+        dateFormat={
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit'
+            }) =>
+    {
         const date = new Date();
         // 1. Add the days to the current date
         date.setDate(date.getDate() + daysFromNow);
@@ -86,7 +89,30 @@ Object.assign(window.ATLib, {
             date.setDate(date.getDate() - 1);
         }
         return date.toLocaleDateString('en-US',dateFormat)
+    },
+
+    checkForFreshPage: async (minutes) => {
+        const now = Date.now(); // Current time in milliseconds
+        const lastVisit = localStorage.getItem("at_last_load_timestamp");
+        // Convert minutes to milliseconds: minutes * 60 seconds * 1000ms
+        const cooldownPeriod = minutes * 60 * 1000;
+
+        if (lastVisit) {
+            const timePassed = now - parseInt(lastVisit);
+
+            if (timePassed > cooldownPeriod) {
+                // It hasn't been N minutes yet!
+                const remaining = Math.round((timePassed) / 1000 / 60);
+                console.log(`Refreshing. ${remaining} minutes passed`);
+                await this.sleep(5)
+                //window.location.href = redirectUrl;
+                window.location.reload()
+                return null; // Stop execution
+            } else {
+                console.log("new page, no reload")}
+        }
     }
+
 });
 
 // sleep = async (seconds) => {
