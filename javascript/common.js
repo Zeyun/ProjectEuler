@@ -113,7 +113,7 @@ Object.assign(window.ATLib, {
         }
     },
     testVariable: 123,
-    test: ()=>{
+    testFunctionAt: ()=>{
         console.log(this.testVariable);
         this.testVariable = this.testVariable + 1
         console.log(this.testVariable)
