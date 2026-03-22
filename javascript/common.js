@@ -66,8 +66,27 @@ Object.assign(window.ATLib, {
                     ));
                 }, timeout);
             });
-        }
+        },
 
+    getBusinessDate: (daysFromNow, dateFormat={
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+    }) => {
+        const date = new Date();
+        // 1. Add the days to the current date
+        date.setDate(date.getDate() + daysFromNow);
+        const dayOfWeek = date.getDay(); // 0 (Sun) to 6 (Sat)
+        // 2. Adjust if it falls on a weekend
+        if (dayOfWeek === 0) {
+            // It's Sunday, go back 2 days to Friday
+            date.setDate(date.getDate() - 2);
+        } else if (dayOfWeek === 6) {
+            // It's Saturday, go back 1 day to Friday
+            date.setDate(date.getDate() - 1);
+        }
+        return date.toLocaleDateString('en-US',dateFormat)
+    }
 });
 
 // sleep = async (seconds) => {
