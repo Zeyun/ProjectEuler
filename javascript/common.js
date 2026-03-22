@@ -26,7 +26,6 @@ Object.assign(window.ATLib, {
             const selectorList = (Array.isArray(selector) ? selector : [selector]).map(entry =>
                 typeof entry === 'string' ? { selector: entry, shadow: false } : entry
             );
-            console.log(selectorList, "list here======", timeout, default_timeout)
             return new Promise((resolve, reject) => {
                 const check = () => {
                     for (const { selector, shadow } of selectorList) {
