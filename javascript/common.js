@@ -1,6 +1,7 @@
 window.ATLib = window.ATLib || {};
 
 Object.assign(window.ATLib, {
+    config: {awsEmailUrl: null, awsEmailApi: null},
     sleep: async (seconds) => {
         return new Promise((resolve) => {
             let remaining = seconds;
@@ -117,6 +118,17 @@ Object.assign(window.ATLib, {
         console.log(window.ATLib.testVariable);
         window.ATLib.testVariable = window.ATLib.testVariable + 1
         console.log(window.ATLib.testVariable)
+    },
+    sendEmail: async (subject="test subject", payload="test payload") =>{
+        return fetch(window.ATLib.config.awsEmailUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": window.ATLib.config.awsEmailApi
+            },
+            body: JSON.stringify({subject: subject, payload: payload}) // Body data must match "Content-Type" header
+        })
+
     }
 });
 
