@@ -111,8 +111,13 @@ Object.assign(window.ATLib, {
             } else {
                 console.log("new page, no reload")}
         }
+    },
+    testVariable: 123,
+    test: ()=>{
+        console.log(this.testVariable);
+        this.testVariable = this.testVariable + 1
+        console.log(this.testVariable)
     }
-
 });
 
 // sleep = async (seconds) => {
