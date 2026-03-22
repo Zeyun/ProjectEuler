@@ -135,22 +135,3 @@ Object.assign(window.ATLib, {
     }
 });
 
-// sleep = async (seconds) => {
-//     return new Promise((resolve) => {
-//         let remaining = seconds;
-//
-//         const interval = setInterval(() => {
-//             console.log(`Time remaining: ${remaining}s`);
-//             remaining--;
-//
-//             if (remaining < 0) {
-//                 clearInterval(interval);
-//                 console.log("Timer finished!");
-//                 resolve();
-//             }
-//         }, 1000);
-//     });
-// }
-
-
-// await ATLib.sleep(10);
